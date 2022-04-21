@@ -1,0 +1,15 @@
+<%= link_to "Create New Post", new_community_post_path(@community), class: "btn btn-primary float-right mb-4" %>
+
+<%= @community.name %>
+
+<%# This code block dispalys the title and truncated body text of posts within the community view page %>
+<% @posts.each do |post| %>
+<%# Title also serves as a link to the post within the community %>
+  <h4><%= link_to post.title, community_post_path(@community, post) %></h4>
+  <!-- #truncates the text body in this view to 200 chars -->
+  <p><%= truncate post.body, length: 200 %></p>
+<% end %>
+
+<small>
+  <%= simple_format @community.rules %>
+</small>
